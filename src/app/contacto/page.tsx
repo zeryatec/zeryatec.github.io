@@ -74,8 +74,7 @@ const Contact = () => {
 
             <div className="grid sm:grid-cols-2 gap-6 mb-12">
               {[
-                { icon: <Mail />, label: "Email Corporativo", val: "proyectos@zeryatec.es", color: "text-primary-600" },
-                { icon: <Phone />, label: "Línea Directa", val: "+34 900 834 212", color: "text-secondary-500" },
+                { icon: <Mail />, label: "Email Corporativo", val: "zeryatec@gmail.com", color: "text-primary-600" }
               ].map((item, i) => (
                 <motion.div
                   key={i}
