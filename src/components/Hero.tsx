@@ -39,7 +39,7 @@ export default function Hero() {
     <section 
       ref={ref} 
       onMouseMove={handleMouseMove}
-      className="relative w-full min-h-screen overflow-hidden bg-[#fafcff] flex items-center pt-28 pb-20 group"
+      className="relative w-full min-h-screen overflow-hidden bg-[#fafcff] flex items-center pt-40 pb-20 group"
     >
       {/* Background Grid - Darker base */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.06] bg-[linear-gradient(to_right,#006593_1px,transparent_1px),linear-gradient(to_bottom,#006593_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>

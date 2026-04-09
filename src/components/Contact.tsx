@@ -13,7 +13,7 @@ export default function Contact() {
 
     const formData = new FormData(e.currentTarget);
     // Tu API Key de Web3Forms para que llegue a zeryatec@gmail.com
-    formData.append("access_key", "f3ffaf69-ef75-4031-a0df-7bd6fddc36bc");
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {

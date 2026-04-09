@@ -31,7 +31,7 @@ const Contact = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "f3ffaf69-ef75-4031-a0df-7bd6fddc36bc",
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "",
           subject: `[Web ZeryaTec] Nueva solicitud de ${formData.name}`,
           from_name: formData.name,
           email: formData.email,
