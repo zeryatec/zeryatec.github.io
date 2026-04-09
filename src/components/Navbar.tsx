@@ -9,42 +9,55 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Control del scroll para efectos visuales
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const links = [
     { name: "Inicio", href: "/" },
-    { name: "Productos", href: "/productos" },
+    { name: "Servicios", href: "/servicios" },
     { name: "Sobre Nosotros", href: "/nosotros" },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-[0_4px_20px_rgba(0,0,0,0.06)]' : 'bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex justify-between items-center transition-all duration-500 ease-in-out ${isScrolled ? "h-16" : "h-40"}`}>
+    <nav 
+      // fixed top-0 y z-[100] lo mantienen siempre arriba de todo
+      className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
+        isScrolled 
+          ? 'bg-white/80 backdrop-blur-lg shadow-md py-3' 
+          : 'bg-transparent py-6 md:py-8'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex justify-between items-center">
+          
+          {/* SECCIÓN DEL LOGO */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center">
               <img 
                 src="/logohorizontal.png" 
                 alt="ZeryaTec Logo" 
-                className={`w-auto drop-shadow-sm transition-all duration-500 hover:scale-105 origin-left 
-                  ${isScrolled ? "h-10 md:h-12" : "h-28 md:h-32"}
+                // Tamaños dinámicos: más pequeño al hacer scroll
+                className={`w-auto transition-all duration-500 ease-in-out origin-left
+                  ${isScrolled ? "h-8 md:h-10" : "h-12 md:h-16"}
                 `} 
               />
             </Link>
           </div>
           
+          {/* NAVEGACIÓN DESKTOP */}
           <div className="hidden md:flex items-center space-x-10">
             {links.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`transition-colors font-medium text-[16px] ${
-                  isScrolled ? "text-gray-700 hover:text-primary" : "text-gray-900 hover:text-primary"
+                className={`transition-colors font-bold text-sm uppercase tracking-widest ${
+                  isScrolled ? "text-slate-700 hover:text-primary-600" : "text-slate-900 hover:text-primary-600"
                 }`}
               >
                 {link.name}
@@ -52,42 +65,53 @@ export default function Navbar() {
             ))}
             <Link
               href="/contacto"
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg hover:scale-105 text-[15px]"
+              className="bg-slate-900 hover:bg-primary-600 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-primary-600/20 hover:scale-105 text-xs uppercase tracking-widest"
             >
               Contacto
             </Link>
           </div>
 
+          {/* BOTÓN MENÚ MÓVIL */}
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-800 hover:text-primary focus:outline-none p-2"
+              className="text-slate-900 focus:outline-none p-2"
             >
-              {isOpen ? <X size={32} /> : <Menu size={32} />}
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
       </div>
 
+      {/* MENÚ DESPLEGABLE MÓVIL */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white shadow-xl border-b border-gray-100 overflow-hidden absolute w-full"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 w-full bg-white shadow-2xl border-b border-slate-100 md:hidden"
           >
-            <div className="px-4 pt-2 pb-6 space-y-2">
+            <div className="px-6 py-8 space-y-4">
               {links.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block px-4 py-4 text-lg font-medium text-gray-800 hover:text-primary hover:bg-slate-50 rounded-lg"
+                  className="block text-2xl font-black text-slate-900 hover:text-primary-600 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
+              <div className="pt-4">
+                <Link
+                  href="/contacto"
+                  className="block w-full bg-slate-900 text-white text-center py-4 rounded-2xl font-black uppercase tracking-widest"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Contacto
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}
