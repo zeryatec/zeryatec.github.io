@@ -1,9 +1,44 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Globe } from "lucide-react";
+import { Send, Mail, Globe } from "lucide-react";
 
 export default function Contact() {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      nombre: formData.get("nombre"),
+      email: formData.get("email"),
+      sector: formData.get("sector"),
+      mensaje: formData.get("mensaje")
+    };
+
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        alert("¡Mensaje enviado con éxito!");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        alert("Hubo un problema al enviar el mensaje.");
+      }
+    } catch (error) {
+      console.error("Error enviando formulario:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="contacto" className="py-24 bg-gray-50 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +55,7 @@ export default function Contact() {
             <p className="text-lg text-gray-600 mb-8 font-medium">
               "Operamos 100% en la nube. Somos ágiles, directos y eficientes."
             </p>
-            
+
             <div className="space-y-6">
               <div className="flex items-center gap-4 text-gray-600">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
@@ -49,11 +84,13 @@ export default function Contact() {
             viewport={{ once: true }}
             className="bg-white p-8 md:p-10 rounded-3xl shadow-xl shadow-gray-200/50"
           >
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Nombre completo</label>
                 <input
                   type="text"
+                  name="nombre"
+                  required
                   className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                   placeholder="Ej: Laura García"
                 />
@@ -62,6 +99,8 @@ export default function Contact() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Correo corporativo</label>
                 <input
                   type="email"
+                  name="email"
+                  required
                   className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                   placeholder="hola@empresa.com"
                 />
@@ -70,6 +109,8 @@ export default function Contact() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Sector de tu empresa</label>
                 <input
                   type="text"
+                  name="sector"
+                  required
                   className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                   placeholder="Ej: Clínica Dental, Taller..."
                 />
@@ -77,14 +118,20 @@ export default function Contact() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">¿Cómo podemos ayudarte?</label>
                 <textarea
+                  name="mensaje"
+                  required
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors resize-none"
                   placeholder="Cuéntanos sobre los procesos que quieres mejorar..."
                 ></textarea>
               </div>
-              <button className="w-full py-4 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/30 transition-all hover:-translate-y-0.5">
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full py-4 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/30 transition-all hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
+              >
                 <Send className="w-5 h-5" />
-                Enviar Mensaje
+                {loading ? "Enviando..." : "Enviar Mensaje"}
               </button>
             </form>
           </motion.div>
