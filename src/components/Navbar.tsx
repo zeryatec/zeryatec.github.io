@@ -9,7 +9,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Control del scroll para efectos visuales
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -26,7 +25,6 @@ export default function Navbar() {
 
   return (
     <nav 
-      // fixed top-0 y z-[100] lo mantienen siempre arriba de todo
       className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
         isScrolled 
           ? 'bg-white/80 backdrop-blur-lg shadow-md py-3' 
@@ -34,7 +32,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* HE AÑADIDO 'items-center' AQUÍ PARA CENTRAR EL LOGO Y EL BOTÓN MÓVIL */}
+        {/* items-center centrado vertical real */}
         <div className="flex justify-between items-center">
           
           {/* SECCIÓN DEL LOGO */}
@@ -43,7 +41,6 @@ export default function Navbar() {
               <img 
                 src="/logohorizontal.png" 
                 alt="ZeryaTec Logo" 
-                // Tamaños dinámicos: más pequeño al hacer scroll
                 className={`w-auto transition-all duration-500 ease-in-out origin-left
                   ${isScrolled ? "h-8 md:h-10" : "h-12 md:h-16"}
                 `} 
@@ -72,7 +69,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* BOTÓN MENÚ MÓVIL - AÑADIDO 'flex items-center' PARA EL CENTRADO VERTICAL */}
+          {/* BOTÓN MENÚ MÓVIL CENTRADO */}
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -84,7 +81,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MENÚ DESPLEGABLE MÓVIL */}
+      {/* MENÚ DESPLEGABLE MÓVIL (BLANCO) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
