@@ -27,15 +27,14 @@ export default function Navbar() {
     <nav 
       className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white/80 backdrop-blur-lg shadow-md py-3' 
+          ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' 
           : 'bg-transparent py-6 md:py-8'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* items-center centrado vertical real */}
         <div className="flex justify-between items-center">
           
-          {/* SECCIÓN DEL LOGO */}
+          {/* LOGO - Centrado verticalmente */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center">
               <img 
@@ -54,62 +53,58 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`transition-colors font-bold text-sm uppercase tracking-widest ${
-                  isScrolled ? "text-slate-700 hover:text-primary-600" : "text-slate-900 hover:text-primary-600"
-                }`}
+                className="transition-colors font-bold text-sm uppercase tracking-widest text-gray-900 hover:text-cyan-600"
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="/contacto"
-              className="bg-slate-900 hover:bg-primary-600 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-primary-600/20 hover:scale-105 text-xs uppercase tracking-widest"
+              className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 rounded-full font-bold transition-all shadow-md hover:scale-105 text-xs uppercase tracking-widest"
             >
               Contacto
             </Link>
           </div>
 
-          {/* BOTÓN MENÚ MÓVIL CENTRADO */}
+          {/* BOTÓN HAMBURGUESA - Centrado verticalmente con el logo */}
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-900 focus:outline-none p-2 flex items-center justify-center"
+              className="text-gray-900 focus:outline-none p-2 flex items-center justify-center"
             >
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+              {isOpen ? <X size={32} /> : <Menu size={32} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* MENÚ DESPLEGABLE MÓVIL (BLANCO) */}
+      {/* MENÚ MÓVIL DESPLEGABLE - Siempre fondo blanco para evitar el efecto 'negro' */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white shadow-2xl border-b border-slate-100 md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="absolute top-full left-0 w-full bg-white shadow-xl md:hidden overflow-hidden border-t border-gray-100"
           >
-            <div className="px-6 py-8 space-y-4">
+            <div className="px-6 py-8 space-y-6">
               {links.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block text-2xl font-black text-slate-900 hover:text-primary-600 transition-colors"
+                  className="block text-xl font-bold text-gray-900 hover:text-cyan-600 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4">
-                <Link
-                  href="/contacto"
-                  className="block w-full bg-slate-900 text-white text-center py-4 rounded-2xl font-black uppercase tracking-widest"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Contacto
-                </Link>
-              </div>
+              <Link
+                href="/contacto"
+                className="block w-full bg-cyan-600 text-white text-center py-4 rounded-xl font-bold uppercase tracking-widest"
+                onClick={() => setIsOpen(false)}
+              >
+                Contacto
+              </Link>
             </div>
           </motion.div>
         )}
