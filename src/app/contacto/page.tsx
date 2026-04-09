@@ -19,16 +19,37 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitError, setSubmitError] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate technical processing
-    setTimeout(() => {
+    setSubmitError(false);
+
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre: formData.name,
+          email: formData.email,
+          mensaje: formData.message,
+        }),
+      });
+
+      if (res.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setIsSubmitted(false), 8000);
+      } else {
+        setSubmitError(true);
+      }
+    } catch (error) {
+      console.error("Error enviando formulario:", error);
+      setSubmitError(true);
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setIsSubmitted(false), 8000);
-    }, 2500);
+    }
   };
 
   const inputClasses = (name: string) => `
