@@ -12,65 +12,25 @@ export default function Contact() {
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-    const nombre = formData.get("nombre") as string;
-    const email = formData.get("email") as string;
-    const sector = formData.get("sector") as string;
-    const mensaje = formData.get("mensaje") as string;
+    // Tu API Key de Web3Forms para que llegue a zeryatec@gmail.com
+    formData.append("access_key", "f3ffaf69-ef75-4031-a0df-7bd6fddc36bc");
 
     try {
-      const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "api-key": "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",
-        },
-        body: JSON.stringify({
-          sender: { name: "ZeryaTec Web", email: "zeryatec@gmail.com" },
-          to: [{ email: "zeryatec@gmail.com", name: "ZeryaTec" }],
-          replyTo: { email: email, name: nombre },
-          subject: `[Web ZeryaTec] Nueva solicitud de ${nombre}`,
-          htmlContent: `
-            <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f8fafc; border-radius: 16px; overflow: hidden;">
-              <div style="background: linear-gradient(135deg, #006593, #003852); padding: 32px; text-align: center;">
-                <h1 style="color: white; margin: 0; font-size: 24px; font-weight: 800;">Nueva Solicitud de Contacto</h1>
-              </div>
-              <div style="padding: 32px;">
-                <div style="background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; border-left: 4px solid #006593;">
-                  <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;">Nombre</p>
-                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #1e293b;">${nombre}</p>
-                </div>
-                <div style="background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; border-left: 4px solid #006593;">
-                  <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;">Email</p>
-                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #1e293b;">${email}</p>
-                </div>
-                <div style="background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; border-left: 4px solid #006593;">
-                  <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;">Sector</p>
-                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #1e293b;">${sector}</p>
-                </div>
-                <div style="background: white; border-radius: 12px; padding: 24px; border-left: 4px solid #006593;">
-                  <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;">Mensaje</p>
-                  <p style="margin: 0; font-size: 16px; color: #1e293b; white-space: pre-wrap;">${mensaje}</p>
-                </div>
-              </div>
-              <div style="background: #f1f5f9; padding: 16px; text-align: center;">
-                <p style="margin: 0; font-size: 12px; color: #94a3b8;">Puedes responder directamente a este email para contactar con ${nombre}.</p>
-              </div>
-            </div>
-          `,
-        }),
+        body: formData
       });
 
-      if (res.ok) {
+      const data = await res.json();
+
+      if (data.success) {
         alert("¡Mensaje enviado con éxito!");
         (e.target as HTMLFormElement).reset();
       } else {
-        console.error("Error de Brevo:", await res.json());
         alert("Hubo un problema al enviar el mensaje.");
       }
     } catch (error) {
       console.error("Error enviando formulario:", error);
-      alert("Error de conexión. Inténtalo de nuevo.");
     } finally {
       setLoading(false);
     }

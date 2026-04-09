@@ -27,51 +27,26 @@ const Contact = () => {
     setSubmitError(false);
 
     try {
-      const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "api-key": "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",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          sender: { name: "ZeryaTec Web", email: "zeryatec@gmail.com" },
-          to: [{ email: "zeryatec@gmail.com", name: "ZeryaTec" }],
-          replyTo: { email: formData.email, name: formData.name },
+          access_key: "TU_ACCESS_KEY_DE_WEB3FORMS",
           subject: `[Web ZeryaTec] Nueva solicitud de ${formData.name}`,
-          htmlContent: `
-            <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f8fafc; border-radius: 16px; overflow: hidden;">
-              <div style="background: linear-gradient(135deg, #006593, #003852); padding: 32px; text-align: center;">
-                <h1 style="color: white; margin: 0; font-size: 24px; font-weight: 800;">Nueva Solicitud de Contacto</h1>
-              </div>
-              <div style="padding: 32px;">
-                <div style="background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; border-left: 4px solid #006593;">
-                  <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;">Nombre</p>
-                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #1e293b;">${formData.name}</p>
-                </div>
-                <div style="background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; border-left: 4px solid #006593;">
-                  <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;">Email</p>
-                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #1e293b;">${formData.email}</p>
-                </div>
-                <div style="background: white; border-radius: 12px; padding: 24px; border-left: 4px solid #006593;">
-                  <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;">Mensaje</p>
-                  <p style="margin: 0; font-size: 16px; color: #1e293b; white-space: pre-wrap;">${formData.message}</p>
-                </div>
-              </div>
-              <div style="background: #f1f5f9; padding: 16px; text-align: center;">
-                <p style="margin: 0; font-size: 12px; color: #94a3b8;">Puedes responder directamente a este email para contactar con ${formData.name}.</p>
-              </div>
-            </div>
-          `,
+          from_name: formData.name,
+          email: formData.email,
+          message: formData.message,
         }),
       });
 
-      if (res.ok) {
+      const data = await res.json();
+
+      if (data.success) {
         setIsSubmitted(true);
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setIsSubmitted(false), 8000);
       } else {
-        console.error("Error de Brevo:", await res.json());
+        console.error("Error de Web3Forms:", data);
         setSubmitError(true);
       }
     } catch (error) {
