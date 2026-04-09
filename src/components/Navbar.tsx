@@ -41,7 +41,7 @@ export default function Navbar() {
                 src="/logohorizontal.png" 
                 alt="ZeryaTec Logo" 
                 className={`w-auto transition-all duration-500 ease-in-out origin-left
-                  ${isScrolled ? "h-8 md:h-10" : "h-12 md:h-16"}
+                  ${isScrolled ? "h-8 md:h-10" : "h-16 md:h-20"}
                 `} 
               />
             </Link>
