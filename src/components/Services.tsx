@@ -2,6 +2,7 @@
 
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { Check, Calendar, Settings, Laptop, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
@@ -112,7 +113,8 @@ function InteractiveCard({ service, index }: { service: any; index: number }) {
         ))}
       </div>
 
-      <button
+      <Link
+        href="/contacto"
         className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 group/btn ${
           service.featured
             ? "bg-white text-[#003852] hover:bg-gray-50 shadow-lg"
@@ -121,7 +123,7 @@ function InteractiveCard({ service, index }: { service: any; index: number }) {
       >
         Empezar ahora
         <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-      </button>
+      </Link>
     </motion.div>
   );
 }
