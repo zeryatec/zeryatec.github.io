@@ -31,7 +31,7 @@ const Contact = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "TU_ACCESS_KEY_DE_WEB3FORMS",
+          access_key: "f3ffaf69-ef75-4031-a0df-7bd6fddc36bc",
           subject: `[Web ZeryaTec] Nueva solicitud de ${formData.name}`,
           from_name: formData.name,
           email: formData.email,
@@ -244,6 +244,16 @@ const Contact = () => {
                         )}
                       </span>
                     </button>
+
+                    {submitError && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-red-500 text-sm font-semibold text-center mt-4"
+                      >
+                        Error al enviar el mensaje. Inténtalo de nuevo o escríbenos a zeryatec@gmail.com.
+                      </motion.p>
+                    )}
 
 
                   </motion.form>
