@@ -69,10 +69,10 @@ const Services = () => {
   };
 
   return (
-    <div className="min-h-screen pt-24 bg-white selection:bg-primary-100 selection:text-primary-900">
+    <div className="min-h-screen pt-24 bg-white dark:bg-slate-900 selection:bg-primary-100 selection:text-primary-900">
 
       {/* Hero Section */}
-      <section className="py-28 relative overflow-hidden bg-white">
+      <section className="py-28 relative overflow-hidden bg-white dark:bg-slate-900">
         <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary-100 rounded-full blur-[120px] opacity-50 pointer-events-none animate-blob" />
         <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-secondary-100 rounded-full blur-[100px] opacity-40 pointer-events-none animate-blob" style={{ animationDelay: '3s' }} />
 
@@ -97,7 +97,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="font-display text-5xl md:text-6xl lg:text-7xl font-[900] text-slate-900 mb-8 tracking-tighter leading-[1.1]"
+              className="font-display text-5xl md:text-6xl lg:text-7xl font-[900] text-slate-900 dark:text-white mb-8 tracking-tighter leading-[1.1]"
             >
               Soluciones a la <span className="text-secondary-400 italic">medida de tu ambición</span>
             </motion.h1>
@@ -106,7 +106,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-slate-600 leading-relaxed font-medium max-w-3xl mx-auto"
+              className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium max-w-3xl mx-auto"
             >
               Tres niveles de servicio diseñados para cubrir desde la presencia digital básica hasta el mantenimiento continuo de tu ecosistema.
             </motion.p>
@@ -115,7 +115,7 @@ const Services = () => {
       </section>
 
       {/* Plans Section */}
-      <section className="py-24 relative overflow-hidden bg-slate-50">
+      <section className="py-24 relative overflow-hidden bg-slate-50 dark:bg-slate-900">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[800px] bg-primary-50 rounded-full blur-[150px] opacity-40 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -130,7 +130,7 @@ const Services = () => {
                 whileHover={{ y: -8 }}
                 className={`relative rounded-3xl overflow-hidden flex flex-col group transition-all duration-500 ${plan.featured
                     ? 'bg-gradient-to-br from-slate-900 via-primary-900 to-slate-900 text-white shadow-2xl shadow-primary-900/30 lg:scale-105 z-10'
-                    : 'bg-white border border-slate-200 shadow-sm hover:shadow-2xl'
+                    : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-2xl'
                   }`}
               >
                 {/* Featured badge */}
@@ -162,7 +162,7 @@ const Services = () => {
                   </motion.div>
 
                   {/* Name & Tagline */}
-                  <h3 className={`font-display text-2xl font-[900] mb-1 tracking-tight ${plan.featured ? 'text-white' : 'text-slate-900'
+                  <h3 className={`font-display text-2xl font-[900] mb-1 tracking-tight ${plan.featured ? 'text-white' : 'text-slate-900 dark:text-white'
                     }`}>
                     {plan.name}
                   </h3>
@@ -175,7 +175,7 @@ const Services = () => {
                   {/* Price */}
                   <div className="mb-5">
                     <div className="flex items-baseline">
-                      <span className={`text-4xl font-[900] font-display tracking-tighter ${plan.featured ? 'text-white' : 'text-slate-900'
+                      <span className={`text-4xl font-[900] font-display tracking-tighter ${plan.featured ? 'text-white' : 'text-slate-900 dark:text-white'
                         }`}>
                         {plan.price}€
                       </span>
@@ -187,7 +187,7 @@ const Services = () => {
                   </div>
 
                   {/* Description */}
-                  <p className={`text-sm mb-6 leading-relaxed ${plan.featured ? 'text-white/60' : 'text-slate-500'
+                  <p className={`text-sm mb-6 leading-relaxed ${plan.featured ? 'text-white/60' : 'text-slate-500 dark:text-slate-400'
                     }`}>
                     {plan.description}
                   </p>
@@ -197,7 +197,7 @@ const Services = () => {
                     onClick={() => toggleCard(idx)}
                     className={`w-full py-3 rounded-xl text-sm font-bold flex items-center justify-center mb-5 transition-all duration-300 cursor-pointer ${plan.featured
                         ? 'bg-white/10 text-white/80 hover:bg-white/20 border border-white/10'
-                        : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-100'
+                        : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-100 dark:border-slate-700'
                       }`}
                   >
                     {expandedCard === idx ? 'Ocultar detalles' : 'Ver detalles'}
@@ -234,7 +234,7 @@ const Services = () => {
                                 <Check className={`w-3 h-3 ${plan.featured ? 'text-secondary-400' : 'text-primary-700'
                                   }`} />
                               </div>
-                              <span className={`text-sm font-medium ${plan.featured ? 'text-white/80' : 'text-slate-700'
+                              <span className={`text-sm font-medium ${plan.featured ? 'text-white/80' : 'text-slate-700 dark:text-slate-300'
                                 }`}>
                                 {feature}
                               </span>
@@ -250,7 +250,7 @@ const Services = () => {
                     href="/contacto"
                     className={`relative overflow-hidden w-full py-4 rounded-2xl font-bold text-center transition-all duration-300 flex items-center justify-center group/btn active:scale-[0.97] ${plan.featured
                         ? 'bg-secondary-500 text-slate-900 hover:bg-secondary-400 shadow-lg shadow-secondary-500/30'
-                        : 'bg-slate-900 text-white hover:bg-primary-700 shadow-lg shadow-slate-900/20'
+                        : 'bg-slate-900 dark:bg-slate-800 text-white hover:bg-primary-700 shadow-lg shadow-slate-900/20 dark:shadow-none'
                       }`}
                   >
                     <span className="relative z-10 flex items-center">
@@ -266,7 +266,7 @@ const Services = () => {
       </section>
 
       {/* Stats / Trust Bar */}
-      <section className="py-16 bg-white relative overflow-hidden border-y border-slate-100">
+      <section className="py-16 bg-white dark:bg-slate-900 relative overflow-hidden border-y border-slate-100 dark:border-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -281,14 +281,14 @@ const Services = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ scale: 1.03 }}
-                className="flex items-center space-x-5 p-6 rounded-2xl hover:bg-slate-50 transition-all duration-300 cursor-default group"
+                className="flex items-center space-x-5 p-6 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 cursor-default group"
               >
-                <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 group-hover:border-primary-100 group-hover:shadow-md transition-all duration-300">
+                <div className="w-14 h-14 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-100 dark:border-slate-700 group-hover:border-primary-100 group-hover:shadow-md transition-all duration-300">
                   {stat.icon}
                 </div>
                 <div>
                   <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">{stat.label}</p>
-                  <p className="text-slate-900 font-extrabold text-lg">{stat.value}</p>
+                  <p className="text-slate-900 dark:text-white font-extrabold text-lg">{stat.value}</p>
                 </div>
               </motion.div>
             ))}
@@ -297,7 +297,7 @@ const Services = () => {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-28 bg-white relative overflow-hidden">
+      <section className="py-28 bg-white dark:bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary-50/20 pointer-events-none" />
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-100 rounded-full blur-[120px] opacity-30 pointer-events-none animate-blob" />
 
@@ -308,10 +308,10 @@ const Services = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-display text-3xl md:text-5xl font-[900] text-slate-900 mb-6 tracking-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-[900] text-slate-900 dark:text-white mb-6 tracking-tight">
               ¿No encaja ninguno al 100%?
             </h2>
-            <p className="text-lg md:text-xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
               Cada proyecto es único. Contáctanos y diseñaremos un plan totalmente adaptado a tus necesidades técnicas y presupuesto.
             </p>
             <motion.div whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 300 }}>

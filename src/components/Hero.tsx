@@ -39,7 +39,7 @@ export default function Hero() {
     <section 
       ref={ref} 
       onMouseMove={handleMouseMove}
-      className="relative w-full min-h-screen overflow-hidden bg-[#fafcff] flex items-center pt-40 pb-20 group"
+      className="relative w-full min-h-screen overflow-hidden bg-[#fafcff] dark:bg-slate-900 flex items-center pt-40 pb-20 group"
     >
       {/* Background Grid - Darker base */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.06] bg-[linear-gradient(to_right,#006593_1px,transparent_1px),linear-gradient(to_bottom,#006593_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
@@ -67,18 +67,18 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl"
         >
-          <div className="mb-8 inline-flex items-center gap-2 bg-white border border-gray-200 shadow-md shadow-primary/5 rounded-full px-5 py-2 hover:scale-105 transition-transform cursor-default">
+          <div className="mb-8 inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 shadow-md shadow-primary/5 rounded-full px-5 py-2 hover:scale-105 transition-transform cursor-default">
             <Sparkles className="w-4 h-4 text-accent" />
             <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#009bc2] uppercase tracking-widest">
               Consultoría Tecnológica B2B
             </span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-extrabold tracking-tight text-gray-900 mb-8 leading-[1.1]">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-extrabold tracking-tight text-gray-900 dark:text-white mb-8 leading-[1.1]">
             Digitalizamos tu negocio <br className="hidden md:block" />
             <span className="text-gradient drop-shadow-sm">para que tú solo crezcas.</span>
           </h1>
-          <p className="mt-4 text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
+          <p className="mt-4 text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-slate-400 max-w-3xl mx-auto font-medium leading-relaxed">
             Soluciones de software, automatización e IA construidas a medida de las empresas más exigentes.
           </p>
           
@@ -99,9 +99,9 @@ export default function Hero() {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center"
           >
-            <span className="text-xs md:text-sm font-bold text-gray-500 mb-3 tracking-widest uppercase">Descubre Más</span>
-            <div className="w-7 h-12 border-2 border-gray-400 rounded-full flex justify-center pt-2">
-              <div className="w-1.5 h-3 bg-gray-400 rounded-full opacity-80"></div>
+            <span className="text-xs md:text-sm font-bold text-gray-500 dark:text-slate-400 mb-3 tracking-widest uppercase">Descubre Más</span>
+            <div className="w-7 h-12 border-2 border-gray-400 dark:border-slate-500 rounded-full flex justify-center pt-2">
+              <div className="w-1.5 h-3 bg-gray-400 dark:bg-slate-500 rounded-full opacity-80"></div>
             </div>
           </motion.div>
         </div>

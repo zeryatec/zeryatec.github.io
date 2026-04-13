@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,8 +28,8 @@ export default function Navbar() {
     <nav 
       className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' 
-          : 'bg-white py-6 md:py-8'
+          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm py-3' 
+          : 'bg-white dark:bg-slate-900 py-6 md:py-8'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -40,7 +41,14 @@ export default function Navbar() {
               <img 
                 src="/logohorizontal.png" 
                 alt="ZeryaTec Logo" 
-                className={`w-auto transition-all duration-500 ease-in-out origin-left
+                className={`w-auto transition-all duration-500 ease-in-out origin-left dark:hidden
+                  ${isScrolled ? "h-8 md:h-10" : "h-16 md:h-20"}
+                `} 
+              />
+              <img 
+                src="/logohorizontal1.png" 
+                alt="ZeryaTec Logo" 
+                className={`w-auto transition-all duration-500 ease-in-out origin-left hidden dark:block
                   ${isScrolled ? "h-8 md:h-10" : "h-16 md:h-20"}
                 `} 
               />
@@ -53,7 +61,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="transition-colors font-bold text-sm uppercase tracking-widest text-gray-900 hover:text-cyan-600"
+                className="transition-colors font-bold text-sm uppercase tracking-widest text-gray-900 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-cyan-400"
               >
                 {link.name}
               </Link>
@@ -64,13 +72,15 @@ export default function Navbar() {
             >
               Contacto
             </Link>
+            <ThemeToggle />
           </div>
 
           {/* BOTÓN HAMBURGUESA - Centrado verticalmente con el logo */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-900 focus:outline-none p-2 flex items-center justify-center"
+              className="text-gray-900 dark:text-white focus:outline-none p-2 flex items-center justify-center"
             >
               {isOpen ? <X size={32} /> : <Menu size={32} />}
             </button>
@@ -85,14 +95,14 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-0 w-full bg-white shadow-xl md:hidden overflow-hidden border-t border-gray-100"
+            className="absolute top-full left-0 w-full bg-white dark:bg-slate-900 shadow-xl md:hidden overflow-hidden border-t border-gray-100 dark:border-slate-800"
           >
             <div className="px-6 py-8 space-y-6">
               {links.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block text-xl font-bold text-gray-900 hover:text-cyan-600 transition-colors"
+                  className="block text-xl font-bold text-gray-900 dark:text-slate-100 hover:text-cyan-600 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}

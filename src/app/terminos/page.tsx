@@ -44,21 +44,21 @@ export default function Terminos() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-36">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pt-36">
       {/* Hero */}
-      <section className="py-20 bg-white border-b border-slate-100">
+      <section className="py-20 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-900">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 mb-8">
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mb-8">
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Documento Legal</span>
             </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-slate-950 mb-6 tracking-tight">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-slate-950 dark:text-white mb-6 tracking-tight">
               Términos y <span className="text-primary-600">Condiciones</span>
             </h1>
-            <p className="text-lg text-slate-500 font-medium">
+            <p className="text-lg text-slate-500 dark:text-slate-400 font-medium">
               Última actualización: Abril 2026
             </p>
           </motion.div>
@@ -76,12 +76,12 @@ export default function Terminos() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-2xl p-8 md:p-10 border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="bg-white dark:bg-slate-900 rounded-2xl p-8 md:p-10 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow duration-300"
               >
-                <h2 className="text-xl md:text-2xl font-black text-slate-900 mb-4 tracking-tight">
+                <h2 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">
                   {section.title}
                 </h2>
-                <p className="text-slate-600 leading-relaxed font-medium text-[15px]">
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-[15px]">
                   {section.content}
                 </p>
               </motion.div>
@@ -93,7 +93,7 @@ export default function Terminos() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-20 text-center bg-slate-900 rounded-3xl p-12 text-white relative overflow-hidden"
+            className="mt-20 text-center bg-slate-900 dark:bg-slate-800 rounded-3xl p-12 text-white relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-20 -mt-20" />
             <h3 className="text-2xl md:text-3xl font-black mb-4 relative z-10">¿Tienes alguna duda legal?</h3>

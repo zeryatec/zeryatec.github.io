@@ -14,10 +14,10 @@ const About = () => {
 
   return (
     // CAMBIO: pt-24 para móvil, pt-40 para escritorio para evitar solapamiento con el Navbar
-    <div className="min-h-screen bg-slate-50 pt-24 md:pt-40 selection:bg-primary-900 selection:text-white">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pt-24 md:pt-40 selection:bg-primary-900 selection:text-white">
       
       {/* Hero Section */}
-      <section className="py-12 md:py-24 bg-white border-b border-slate-100">
+      <section className="py-12 md:py-24 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -25,11 +25,11 @@ const About = () => {
             className="max-w-3xl mx-auto text-center"
           >
             {/* CAMBIO: Texto más pequeño en móvil (text-4xl) para evitar desbordamientos */}
-            <h1 className="font-display text-4xl md:text-6xl font-black text-slate-950 mb-6 md:mb-8 tracking-tight md:tracking-wide">
+            <h1 className="font-display text-4xl md:text-6xl font-black text-slate-950 dark:text-white mb-6 md:mb-8 tracking-tight md:tracking-wide">
               Tres trayectorias, <br />
               <span className="text-primary-600">una visión técnica.</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium px-2">
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium px-2">
               ZeryaTec nace de la unión de tres perfiles especializados en Datos, Seguridad y Automatización. Nuestra misión es simple: aplicar ingeniería real para solucionar problemas reales.
             </p>
           </motion.div>
@@ -69,7 +69,7 @@ const About = () => {
       {/* CTA */}
       <section className="py-24 md:py-40 text-center">
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-black text-slate-950 mb-8 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-950 dark:text-white mb-8 leading-tight">
             ¿Listo para trabajar con nosotros?
           </h2>
           <motion.button 

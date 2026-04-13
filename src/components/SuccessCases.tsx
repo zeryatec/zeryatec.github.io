@@ -80,7 +80,7 @@ export default function SuccessCases() {
   ];
 
   return (
-    <section id="sectores" className="py-32 bg-[#fafcff] border-y border-gray-100">
+    <section id="sectores" className="py-32 bg-[#fafcff] dark:bg-slate-900 border-y border-gray-100 dark:border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
@@ -98,7 +98,7 @@ export default function SuccessCases() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6"
           >
             Sectores de <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent drop-shadow-sm">Aplicación</span>
           </motion.h2>
@@ -107,7 +107,7 @@ export default function SuccessCases() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-gray-600 font-medium leading-relaxed"
+            className="text-xl text-gray-600 dark:text-slate-400 font-medium leading-relaxed"
           >
             Nuestra arquitectura base no se limita a un único negocio. Diseñamos ecosistemas polivalentes con capacidad de revolucionar cualquier flujo operativo.
           </motion.p>
@@ -122,7 +122,7 @@ export default function SuccessCases() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               whileHover={{ y: -8 }}
-              className="bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-gray-200/40 group border border-gray-50 flex flex-col items-start transition-all"
+              className="bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden shadow-xl shadow-gray-200/40 group border border-gray-50 dark:border-slate-800 flex flex-col items-start transition-all"
             >
               <div className={`w-full p-8 bg-gradient-to-br ${item.color} flex justify-between items-start`}>
                 <div className="text-white">
@@ -136,10 +136,10 @@ export default function SuccessCases() {
                 </div>
               </div>
               <div className="p-8 flex flex-col flex-grow w-full">
-                <p className="text-gray-600 text-[1.1rem] mb-6 font-medium tracking-tight">{item.description}</p>
+                <p className="text-gray-600 dark:text-slate-400 text-[1.1rem] mb-6 font-medium tracking-tight">{item.description}</p>
                 <ul className="space-y-4 mt-auto">
                   {item.points.map((point, i) => (
-                    <li key={i} className="flex items-start gap-3 text-gray-700">
+                    <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-slate-300">
                       <div className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0 shadow-sm" />
                       <span className="text-[0.95rem] font-medium leading-snug">{point}</span>
                     </li>

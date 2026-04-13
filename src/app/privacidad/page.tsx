@@ -49,22 +49,22 @@ export default function Privacidad() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-36">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pt-36">
       {/* Hero */}
-      <section className="py-20 bg-white border-b border-slate-100">
+      <section className="py-20 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-900">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 mb-8">
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-slate-900 border border-primary-100 dark:border-slate-800 mb-8">
               <Shield className="w-4 h-4 text-primary-600" />
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-900">Protección de Datos</span>
             </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-slate-950 mb-6 tracking-tight">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-slate-950 dark:text-white mb-6 tracking-tight">
               Política de <span className="text-primary-600">Privacidad</span>
             </h1>
-            <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto">
+            <p className="text-lg text-slate-500 dark:text-slate-400 font-medium max-w-2xl mx-auto">
               En ZeryaTec nos tomamos muy en serio la protección de tus datos personales. Esta política explica cómo los recopilamos, usamos y protegemos.
             </p>
             <p className="text-sm text-slate-400 mt-4">
@@ -85,17 +85,17 @@ export default function Privacidad() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-2xl p-8 md:p-10 border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 group"
+                className="bg-white dark:bg-slate-900 rounded-2xl p-8 md:p-10 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow duration-300 group"
               >
                 <div className="flex items-start gap-5">
-                  <div className="w-12 h-12 rounded-2xl bg-primary-50 border border-primary-100 flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white group-hover:border-primary-600 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl bg-primary-50 dark:bg-slate-800 border border-primary-100 dark:border-slate-700 flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white group-hover:border-primary-600 transition-all duration-300">
                     {section.icon}
                   </div>
                   <div>
-                    <h2 className="text-xl md:text-2xl font-black text-slate-900 mb-4 tracking-tight">
+                    <h2 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">
                       {section.title}
                     </h2>
-                    <p className="text-slate-600 leading-relaxed font-medium text-[15px]">
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-[15px]">
                       {section.content}
                     </p>
                   </div>

@@ -66,7 +66,7 @@ const Contact = () => {
   `;
 
   return (
-    <div className="min-h-screen pt-24 bg-white selection:bg-primary-900 selection:text-white">
+    <div className="min-h-screen pt-24 bg-white dark:bg-slate-900 selection:bg-primary-900 selection:text-white">
 
       {/* Dynamic Background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -89,12 +89,12 @@ const Contact = () => {
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-900">Contacto Directo</span>
             </div>
 
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-[900] text-slate-900 mb-8 tracking-tighter leading-[0.9]">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-[900] text-slate-900 dark:text-white mb-8 tracking-tighter leading-[0.9]">
               ¿Conectamos con el <br />
               <span className="text-secondary-400 italic">futuro?</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-slate-600 max-w-xl leading-relaxed mb-12 font-medium">
+            <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-12 font-medium">
               No somos solo una agencia; somos tu socio en ingeniería. Escribe y hablemos de escalabilidad, seguridad y alto rendimiento.
             </p>
 
@@ -105,13 +105,13 @@ const Contact = () => {
                 <motion.div
                   key={i}
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="p-6 bg-white rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 group cursor-default"
+                  className="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-none group cursor-default"
                 >
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-colors duration-300 ${item.color} bg-white border border-slate-100 group-hover:bg-slate-900 group-hover:text-white`}>
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-colors duration-300 ${item.color} bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 group-hover:bg-slate-900 group-hover:text-white`}>
                     {item.icon}
                   </div>
                   <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{item.label}</h4>
-                  <p className="text-slate-900 font-bold tracking-tight">{item.val}</p>
+                  <p className="text-slate-900 dark:text-white font-bold tracking-tight">{item.val}</p>
                 </motion.div>
               ))}
             </div>
@@ -138,7 +138,7 @@ const Contact = () => {
             {/* Animated glow background */}
             <div className="absolute -inset-4 bg-gradient-to-tr from-primary-200 via-secondary-100 to-primary-200 rounded-[3.5rem] blur-2xl opacity-60 animate-pulse" />
 
-            <div className="relative bg-white/70 p-8 md:p-14 rounded-[3rem] shadow-[0_20px_50px_-12px_rgba(0,101,147,0.15)] border border-white backdrop-blur-xl overflow-hidden">
+            <div className="relative bg-white/70 dark:bg-slate-900/70 p-8 md:p-14 rounded-[3rem] shadow-[0_20px_50px_-12px_rgba(0,101,147,0.15)] dark:shadow-none border border-white dark:border-slate-800 backdrop-blur-xl overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-400 to-transparent" />
 
               <AnimatePresence mode="wait">
@@ -153,8 +153,8 @@ const Contact = () => {
                     <div className="w-24 h-24 bg-primary-50 rounded-full flex items-center justify-center mb-8 mx-auto border border-primary-100">
                       <CheckCircle2 className="w-12 h-12 text-primary-500" />
                     </div>
-                    <h2 className="text-3xl font-black text-slate-900 mb-4 italic tracking-tight">Transmisión Completa</h2>
-                    <p className="text-slate-600 text-lg max-w-sm mx-auto font-medium">Hemos recibido tu reporte. Un especialista se pondrá en contacto contigo brevemente.</p>
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4 italic tracking-tight">Transmisión Completa</h2>
+                    <p className="text-slate-600 dark:text-slate-400 text-lg max-w-sm mx-auto font-medium">Hemos recibido tu reporte. Un especialista se pondrá en contacto contigo brevemente.</p>
                   </motion.div>
                 ) : (
                   <motion.form
@@ -163,7 +163,7 @@ const Contact = () => {
                     className="space-y-8"
                   >
                     <div className="flex items-center justify-between mb-8">
-                      <h2 className="text-2xl font-black text-slate-900 tracking-tight uppercase italic">Nueva Solicitud</h2>
+                      <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight uppercase italic">Nueva Solicitud</h2>
                       <div className="flex space-x-1.5 font-mono text-[900]">
                         <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse"></span>
                         <span className="w-2 h-2 rounded-full bg-slate-200"></span>

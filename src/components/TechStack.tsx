@@ -50,7 +50,7 @@ export default function TechStack() {
   ];
 
   return (
-    <section className="py-32 relative overflow-hidden bg-slate-950 text-white">
+    <section className="py-32 relative overflow-hidden bg-slate-900 text-white">
       {/* Background Decorators */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-[20%] -left-[10%] w-[600px] h-[600px] bg-primary-500/10 rounded-full blur-[150px] animate-blob"></div>
